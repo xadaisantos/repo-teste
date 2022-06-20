@@ -5,36 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livros</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
 
-    <h1>LIVROS</h1>
-    <br>
-    <div>
-        <div>
-            <button onclick="window.open('/livros', '_self')">Ver Todos</button>
-            <button onclick="window.open('/livros/create', '_self')">Criar Livro</button>
+    <div class="container">
+        <h1>LIVROS</h1>
+        <br>
+        <div >
+            <button class="btn btn-info" onclick="window.open('/livros', '_self')">Ver Todos</button>
+            <button class="btn btn-info" onclick="window.open('/livros/create', '_self')">Criar Livro</button>
         </div>
         <br>
-        <div>
+        <div class="form">
             <div>Titulo:</div>
-            <div><input name="titulo" id="titulo" type="text"></div>
+            <div><input class="form-control" name="titulo" id="titulo" type="text"></div>
         </div>
         <div>
             <div>ISBN:</div>
-            <div><input name="isbn" id="isbn" type="text"></div>
+            <div><input class="form-control" name="isbn" id="isbn" type="text"></div>
         </div>
         <div>
             <div>Nome do Autor:</div>
-            <div><input name="nome_autor" id="nome_autor" type="text"></div>
+            <div><input class="form-control" name="nome_autor" id="nome_autor" type="text"></div>
         </div>
         <div>
             <div>Ano de Lancamento:</div>
-            <div><input name="ano_lancamento" id="ano_lancamento" type="number"></div>
+            <div><input class="form-control" name="ano_lancamento" id="ano_lancamento" type="number"></div>
         </div>
         <br>
-        <button onclick="enviar()">Enviar</button>
+        <button class="btn btn-primary" onclick="enviar()">Enviar</button>
     </div>
     <script>
         function enviar(){

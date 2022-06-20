@@ -5,46 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Livros</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        .uppercase { text-transform: uppercase; }
+        table {
+            border-collapse: collapse;
+        }
+        table td, table tr, table th {
+            border: 1px solid black;
+            padding: 5px 10px;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>LIVROS</h1>
-    <br>
-    <div>
-        <button onclick="window.open('/livros', '_self')">Ver Todos</button>
-        <button onclick="window.open('/livros/create', '_self')">Criar Livro</button>
+    <div class="container">
+        <h1>LIVROS</h1>
+        <br>
+        <div>
+            <button class="btn btn-info" onclick="window.open('/livros', '_self')">Ver Todos</button>
+            <button class="btn btn-info" onclick="window.open('/livros/create', '_self')">Criar Livro</button>
+        </div>
+        <br>
+        <table class="table table-hover uppercase">
+            <thead>
+                <tr>
+                    <th>titulo</th>
+                    <th>isbn</th>
+                    <th>nome do autor</th>
+                    <th>lancamento</th>
+                    <th>opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($livros as $l)
+                <tr>
+                    <td>{{ $l->titulo }}</td>
+                    <td>{{ $l->isbn }}</td>
+                    <td>{{ $l->nome_autor }}</td>
+                    <td>{{ $l->ano_lancamento }}</td>
+                    <td>
+                        <button class="uppercase btn btn-warning" onclick="editar({{ $l->id }})">editar</button>
+                        <button class="uppercase btn btn-danger" onclick="excluir({{ $l->id }})">deletar</button>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="4">Nada</td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-    <br>
-    <table>
-        <thead>
-            <tr>
-                <th>titulo</th>
-                <th>isbn</th>
-                <th>nome do autor</th>
-                <th>lancamento</th>
-                <th>opções</th>
-            </tr>
-        </thead>
-        <tbody>
-            @forelse($livros as $l)
-            <tr>
-                <td>{{ $l->titulo }}</td>
-                <td>{{ $l->isbn }}</td>
-                <td>{{ $l->nome_autor }}</td>
-                <td>{{ $l->ano_lancamento }}</td>
-                <td>
-                    <button onclick="editar({{ $l->id }})">editar</button>
-                    <button onclick="excluir({{ $l->id }})">deletar</button>
-                </td>
-            </tr>
-            @empty
-            <tr>
-                <td colspan="4">Nada</td>
-            </tr>
-            @endforelse
-        </tbody>
-    </table>
 
     <script>
         function excluir(id){
